@@ -6,6 +6,7 @@ version := "0.1"
 scalaVersion := "2.12.10"
 
 val flinkVersion = "1.9.1"
+val flinkScope = "provided"
 
 resolvers += Resolver.mavenLocal
 resolvers ++= List("Local Maven Repository" at "file:///" + Path.userHome.absolutePath + "/.m2/repository")
@@ -13,11 +14,11 @@ resolvers ++= List("Local Maven Repository" at "file:///" + Path.userHome.absolu
 // scallop is MIT licensed
 libraryDependencies += "org.rogach" %% "scallop" % "3.1.2"
 
-libraryDependencies += "org.apache.flink" % "flink-json" % flinkVersion
-libraryDependencies += "org.apache.flink" %% "flink-streaming-scala" % flinkVersion
-libraryDependencies += "org.apache.flink" %% "flink-table-api-scala-bridge" % flinkVersion
-libraryDependencies += "org.apache.flink" %% "flink-table-planner" % flinkVersion
-libraryDependencies += "org.apache.flink" %% "flink-runtime-web" % flinkVersion
+libraryDependencies += "org.apache.flink" % "flink-json" % flinkVersion % flinkScope
+libraryDependencies += "org.apache.flink" %% "flink-streaming-scala" % flinkVersion % flinkScope
+libraryDependencies += "org.apache.flink" %% "flink-table-api-scala-bridge" % flinkVersion % flinkScope
+libraryDependencies += "org.apache.flink" %% "flink-table-planner" % flinkVersion % flinkScope
+libraryDependencies += "org.apache.flink" %% "flink-runtime-web" % flinkVersion % flinkScope
 
 assemblyMergeStrategy in assembly := {
   case PathList("javax", "servlet", xs @ _*) => MergeStrategy.last
